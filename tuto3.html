@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MongoDB</title>
+    <link href="style.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;600;700;800&family=Inter:wght@400;600&display=swap&subset=latin" rel="stylesheet"> 
+</head>
+<body>
+    <header id="header">
+        <div class="wrapper">
+          <div class="header-content">
+            <div class="logo-container">
+              <a class="logo  logo--color" href="/">
+                <img alt="logo" src="Moodboard-12(1).png" />
+              </a>
+            </div>
+            <nav class="navbar js-navbar">      
+              <ul class="navbar-menu">
+                <a class="" href="index.html"><li>Accueil</li></a>
+                <a class="" href="tuto1.html"><li>Swagger</li></a>
+                <a class="" href="tuto2.html"><li>Node.js et Express</li></a>
+                <a class="" href="tuto3.html"><li>MongoDB</li></a>
+                <a class="" href="tuto4.html"><li>Controller</li></a>
+                <a class="" href="tuto5.html"><li>Dockeriser</li></a>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      
+      </header>
+    <main>
+        <section class="intro">
+            <div class="wrapper">
+                <h1>Configuration de MongoDB</h1>
+                <h2>// Introduction</h2>
+                <p>Dans ce tutoriel, nous allons nous concentrer sur la configuration de MongoDB en tant que base de données et sur la création d'une connexion à la base de données dans notre API.</p>
+                <p>Avant de commencer, assurez-vous que MongoDB est installé sur votre système. Vous pouvez le télécharger et l'installer depuis le site officiel (https://www.mongodb.com/).</p>
+            </div>
+        </section>
+        <section>
+            <div class="wrapper">
+                <div class="sous-wrapper">
+                    <h5> comprendre MongoDB</h5>
+                    <p>MongoDB est un programme de base de données orienté document multiplateforme. Il est classé comme un programme de base de données NoSQL, ce qui signifie qu'il n'utilise pas la base de données relationnelle tabulaire SQL traditionnelle. Au lieu de cela, il utilise des documents de type JSON avec des schémas optionnels.</p>
+                    
+                    
+                    <h5>Configuration de MongoDB</h5>
+                    <p>Pour configurer MongoDB, nous devons créer une base de données et démarrer le serveur MongoDB. Pour créer une base de données, ouvrez le terminal ou l'invite de commande et tapez la commande suivante :</p>
+                    <pre><code class="yaml">
+$ mongod
+                    </code></pre>
+                    <p>Cela permettra de démarrer le serveur MongoDB sur votre système.</p>
+                    
+                    <h5>établir la connexion à la base de données</h5>
+                    <p>Pour établir une connexion à la base de données, nous devons installer le paquet Mongoose. Mongoose est un outil de modélisation d'objets MongoDB conçu pour fonctionner dans un environnement asynchrone. Pour l'installer, tapez la commande suivante dans votre terminal ou votre invite de commande :</p>
+                    <pre><code class="yaml">
+$ npm install mongoose
+                    </code></pre>
+                    <p>Une fois l'installation terminée, vous pouvez créer un fichier nommé <strong>`database.js`</strong> dans votre dossier de configuration. Ce fichier contiendra le code permettant d'établir la connexion à la base de données à l'aide de Mongoose.</p>
+                    <pre><code class="yaml">
+                      // Import mongoose
+const mongoose = require('mongoose');
+
+// mongoose connection
+const mongoDB = process.env.MONGO_URL || null;
+mongoose.connect(mongoDB, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+})
+.then(() => console.log('MongoDB Connected'))
+.catch(err => console.log(err));
+
+// Get connection
+var db = mongoose.connection;
+
+db.on('error', console.error.bind(console, 'MongoDB connection error:'));                      
+                    </code></pre>
+                    <p>Dans le code ci-dessus, nous avons importé le paquet mongoose et créé une connexion MongoDB à l'aide de la méthode mongoose.connect. Nous avons également défini les options <strong>`useNewUrlParser`</strong> et <strong>`useUnifiedTopology</strong> à true pour de meilleures performances.</p>
+                    <p>La constante mongoDB contient l'URL permettant de se connecter au serveur MongoDB. Dans cet exemple, elle est définie sur la valeur de la variable d'environnement MONGO_URL. Si la variable d'environnement n'est pas définie, la constante mongoDB sera définie comme nulle.</p>
+
+                    <h5>Connexion de la base de données à notre API</h5>
+                    <p>Pour connecter la base de données à notre API, nous devons exiger le fichier database.js dans notre fichier index.js. Ajoutez la ligne de code suivante en haut de votre fichier index.js :</p>
+                    <pre><code class="yaml">
+require('./config/database');                     
+                    </code></pre>
+                    <p>Voilà, c'est fait ! Nous avons réussi à configurer MongoDB et à le connecter à votre API.</p>
+
+                    <div class="tips">
+                        <ul>
+                            <li>Assurez-vous que MongoDB est installé sur votre système avant de commencer ce tutoriel.</li>
+                            <li>Le serveur MongoDB doit fonctionner en arrière-plan lors de la connexion à la base de données.</li>
+                        </ul>
+                    </div>
+                    
+                    <h5>Définition du modèle Mongoose :</h5>
+                    <p>Ensuite, vous allez définir le modèle Mongoose à l'aide de la méthode mongoose.model. Cette méthode prend deux paramètres : le nom du modèle et un schéma qui définit les propriétés du modèle. Par exemple :</p>
+                    <pre><code class="yaml">
+const mongoose = require( 'mongoose')
+
+const Items = mongoose.model( 'Items', {
+    id: { type: Number, required: true },
+    name: { type: String, required: true },
+    description: { type: String, required: true }
+})
+  
+module.exports = { Items }                   
+                    </code></pre>
+                    <p>Une fois le modèle défini, vous pouvez effectuer diverses opérations CRUD sur la collection de documents, telles que la création de nouveaux documents, la lecture de documents existants, la mise à jour de documents et la suppression de documents.</p>
+
+                    
+                    
+                    
+                  
+                </div>
+            </div>
+        </section>
+        <section class="exercice">
+                <div class="wrapper">
+                <h2>// Exercice</h2>
+                <p></p>
+                <p>ajouter des éléments dans votre base de donné grâce a <strong>`mongoDBCompass`</strong></p>
+
+                <button onclick="myFunction()">réponse</button>
+                <div id="reponse">
+                    <p>Voici un exemple possible pour cet exercice :</p>
+                    <img alt="logo" src="mongoDBCompass.PNG" />
+            </div>
+        </section>
+    </main>
+    <script src="script.js"></script> 
+</body>
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Node.js</title>
+    <link href="style.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;600;700;800&family=Inter:wght@400;600&display=swap&subset=latin" rel="stylesheet"> 
+</head>
+<body>
+    <header id="header">
+        <div class="wrapper">
+          <div class="header-content">
+            <div class="logo-container">
+              <a class="logo  logo--color" href="/">
+                <img alt="logo" src="Moodboard-12(1).png" />
+              </a>
+            </div>
+            <nav class="navbar js-navbar">      
+              <ul class="navbar-menu">
+                <a class="" href="index.html"><li>Accueil</li></a>
+                <a class="" href="tuto1.html"><li>Swagger</li></a>
+                <a class="" href="tuto2.html"><li>Node.js et Express</li></a>
+                <a class="" href="tuto3.html"><li>MongoDB</li></a>
+                <a class="" href="tuto4.html"><li>Controller</li></a>
+                <a class="" href="tuto5.html"><li>Dockeriser</li></a>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      
+      </header>
+    <main>
+        <section class="intro">
+            <div class="wrapper">
+                <h1>API CRUD avec Node.js et Express</h1>
+                <h2>// Introduction</h2>
+                <p>Ce tutoriel vous guidera dans le processus de création d'une API CRUD (Create, Read, Update, Delete) simple avec Node.js et le framework Express.</p>
+            </div>
+        </section>
+        <section>
+            <div class="wrapper">
+                <div class="sous-wrapper">
+                    <h4>/ Configuration de l'environnement</h4>
+                    <p>Tout d'abord, créez un nouveau dossier de projet et accédez-y dans le terminal. Ensuite, vous devrez installer les dépendances requises à l'aide du gestionnaire de paquets npm. Exécutez la commande suivante dans votre terminal :</p>
+                    <pre><code class="yaml">
+npm init
+npm install express body-parser cors dotenv                        
+                    </code></pre>
+                    <p>Le module dotenv est utilisé pour charger les variables d'environnement d'un fichier .env dans process.env. Le module body-parser est utilisé pour analyser les corps des requêtes entrantes. Le module cors est utilisé pour activer le partage de ressources inter-origine (CORS) dans notre application.</p>
+
+                    <h5>Écriture du code du serveur</h5>
+                    <p>Dans le dossier du projet, créez un nouveau fichier nommé index.js et ajoutez le code suivant :</p>
+                    <pre><code class="yaml">
+require('dotenv').config()
+const express = require('express');
+const app = express();
+const bodyParser = require('body-parser')
+const cors = require('cors');
+
+const PORT = 3000 ;
+const itemsRoutes = require('./routes/items');
+
+// connection database
+
+app.use(cors());
+app.use(bodyParser.urlencoded({extended: true}));
+
+// base route
+app.use('/api/items', itemsRoutes);
+
+// Start serveur
+app.listen(PORT, () => {
+console.log(`The app listening at http://localhost: ${PORT}`)
+});                     
+                    </code></pre>
+                    <p>ce code met en place la structure de base de notre serveur. Le module express est utilisé pour créer l'application Express. La variable PORT est utilisée pour spécifier le numéro de port sur lequel le serveur écoutera les requêtes entrantes. La variable itemsRoutes est utilisée pour exiger les routes pour notre API, qui seront définies dans un fichier séparé.</p>
+                    <p>Ensuite, nous utilisons les modules cors et body-parser pour activer CORS et analyser les corps des requêtes entrantes, respectivement.</p>
+                    <p>Enfin, nous définissons une route de base /api/todos et indiquons au serveur d'écouter sur le PORT spécifié.</p>
+
+                    <h5>Écriture des routes API</h5>
+                    <p>Créez un nouveau dossier nommé routes dans le dossier du projet et un nouveau fichier nommé items.js dans le dossier routes. Ajoutez le code suivant au fichier items.js :</p>
+                    <pre><code class="yaml">
+const express = require( 'express');
+const router = express.Router();
+    
+// Require controller modules.
+const todoControllers = require('../controllers/ItemsControllers.js')
+    
+router.get('/', truc);
+    
+router.post('/', truc);
+    
+router.put('/:id', truc);
+    
+router.delete('/:id', truc);
+    
+module.exports = router;                    
+                     </code></pre>
+                     <p>Dans ce fichier, nous définissons les routes pour notre API en utilisant la fonction express.Router(). Nous avons également besoin du module contrôleur qui contiendra la logique de gestion des différentes routes.</p>
+
+                     <h5>controller de test ( sans logique )</h5>
+                     <p>Ce contrôleur est un exemple très simple, car il ne contient qu'une seule fonction truc qui enregistre la chaîne "coucou" dans la console. La fonction truc est une fonction flèche, qui est une syntaxe abrégée pour écrire des fonctions anonymes en JavaScript.</p>
+                     <p>Dans un scénario réel, ce contrôleur contiendrait généralement une logique permettant d'interagir avec une base de données, de manipuler des données et de renvoyer des réponses au client. La fonction truc pourrait être remplacée par des fonctions qui effectuent des opérations CRUD (Create, Read, Update, Delete) sur une base de données. Le code contenu dans ces fonctions dépendrait des exigences spécifiques de l'application.</p>
+                     <p>voici le code pour <b>`controllers/itemsController`</b> :</p>
+                     <pre><code class="yaml">
+truc = () => {
+    console.log("coucou")
+};            
+                    </code></pre>
+                </div>
+            </div>
+        </section>
+        <section class="exercice">
+                <div class="wrapper">
+                <h2>// tester</h2>
+                <p>Vous pouvez maintenant tester en faisant <b>`npm run dev`</b> et voir un <b>`coucou`</b> dans votre terminal</p>
+
+                <button onclick="myFunction()">résultat</button>
+                <div id="reponse">
+                    <p>Voici ce que vous devriez voir :</p>
+                    <img alt="logo" src="terminal-coucou.PNG" />
+                </div>
+        </section>
+    </main>
+    <script src="script.js"></script> 
+</body>
+</html>

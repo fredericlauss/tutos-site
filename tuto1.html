@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Swagger</title>
+    <link href="style.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;600;700;800&family=Inter:wght@400;600&display=swap&subset=latin" rel="stylesheet"> 
+</head>
+<body>
+    <header id="header">
+        <div class="wrapper">
+          <div class="header-content">
+            <div class="logo-container">
+              <a class="logo  logo--color" href="/">
+                <img alt="logo" src="Moodboard-12(1).png" />
+              </a>
+            </div>
+            <nav class="navbar js-navbar">      
+              <ul class="navbar-menu">
+                <a class="" href="index.html"><li>Accueil</li></a>
+                <a class="" href="tuto1.html"><li>Swagger</li></a>
+                <a class="" href="tuto2.html"><li>Node.js et Express</li></a>
+                <a class="" href="tuto3.html"><li>MongoDB</li></a>
+                <a class="" href="tuto4.html"><li>Controller</li></a>
+                <a class="" href="tuto5.html"><li>Dockeriser</li></a>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      
+      </header>
+    <main>
+        <section class="intro">
+            <div class="wrapper">
+                <h1>Swagger</h1>
+                <h2>// Introduction</h2>
+                <p>Dans ce tutorial, Nous allons apprendre à créer un fichier YAML pour décrire une API qui effectue des opération de CRUD avec Swagger. CRUD signifié Creat, read, upadate et delete ( Créer, Lire, Mettre à jour et Supprimer ), ce sont les opérations les plus basiques qui peuvent être effectués sur une base de données.  À la fin de ce tutoriel, nous aurons une solide compréhension de la création d'une API et de l'utilisation de YAML pour définir ses composants.</p>
+            </div>
+        </section>
+        <section>
+            <div class="wrapper">
+                <div class="sous-wrapper">
+                    <h4>/ Comprendre les bases de YAML</h4>
+                    <p>YAML, qui signifie "YAML Ain't Markup Language", est un format de sérialisation de données lisible par l'homme. Il est souvent utilisé pour les fichiers de configuration, et c'est le format que Swagger utilise pour définir une API.</p>
+                    <p>Avant de plonger dans la création d'un fichier YAML pour une API Swagger, il est important d'avoir une compréhension de base de la syntaxe YAML et des types de données.</p>
+                    
+                    
+                    <h5>Syntaxe YAML</h5>
+                    <ul>
+                        <li>YAML utilise l'indentation pour indiquer l'imbrication, similaire à Python.</li>
+                        <li>YAML utilise les deux-points (:) pour séparer les clés des valeurs.</li>
+                        <li>YAML utilise des tirets (-) pour indiquer des listes.</li>
+                        <li>YAML utilise le symbole dièse (#) pour indiquer les commentaires.</li>
+                    </ul>
+                    <h5>Types de données YAML</h5>
+                    <ul>
+                        <li>Chaînes : entourées de guillemets ("") ou de guillemets simples ('')</li>
+                        <li>Nombres : entiers ou nombres à virgule flottante</li>
+                        <li>Booléens : vrai ou faux</li>
+                        <li>Listes : indiquées par des tirets (-)</li>
+                        <li>Dictionnaires : indiqués par deux-points (:)</li>
+                    </ul>
+                    <p>Notez que l'indentation est importante dans YAML. Chaque niveau d'indentation indique un nouveau niveau d'imbrication.</p>
+                    <div class="tips">
+                        <ul>
+                            <li>Les fichiers YAML utilisent généralement l'extension de fichier .yml ou .yaml</li>
+                            <li>Vous pouvez utiliser des outils en ligne tels que yamltojson.com pour convertir YAML en JSON et vice versa.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="sous-wrapper">
+                    <h4>/ Comprendre l'importance de Swagger</h4>
+                    <p>Maintenant que nous comprenons les bases de YAML, parlons de l'importance de Swagger.</p>
+                    <ul>
+                        <li>Swagger est un outil pour concevoir, créer et documenter des API REST</li>
+                        <li>Il permet une collaboration facile entre les développeurs, les équipes d'assurance qualité et les parties prenantes</li>
+                        <li>Il fournit une documentation claire et lisible par l'homme des points de terminaison de l'API, des exemples de requête/réponse, etc</li>
+                    </ul>
+                    <p>En utilisant Swagger, nous pouvons nous assurer que notre API est bien conçue et facile à utiliser pour les autres développeurs. Il permet également une communication aisée entre les équipes et les parties prenantes.</p>
+                    <div class="tips">
+                        <ul>
+                            <li>Swagger dispose également d'un outil appelé Swagger Editor, qui permet de créer et de modifier facilement des fichiers YAML pour les API Swagger.</li>
+                            <li>De nombreux langages de programmation populaires, tels que Node.js, disposent de bibliothèques qui s'intègrent à Swagger pour générer automatiquement de la documentation et d'autres fonctionnalités.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="sous-wrapper">
+                    <h4>/ Création du fichier YAML pour notre API CRUD</h4>
+                    <p>Maintenant que nous comprenons les bases de YAML et l'importance de Swagger, nous pouvons commencer à créer le fichier YAML pour notre API CRUD.</p>
+                    <p>Définissons d'abord la structure de base de notre fichier YAML :</p>
+                    <pre><code class="yaml">
+swagger: '2.0'
+info:
+  description: 'un exemple d'API CRUD'
+  version: '1.0.0'
+  title: 'API CRUD'
+host: 'localhost:3000'
+basePath: '/'
+schemes:
+  - http
+paths:
+  # Nos opérations de crud serons là
+                    </code></pre>
+                    <p>Il s'agit de la structure de base d'un fichier Swagger YAML.</p>
+                    <p>Il se compose d'un champ <b>`swagger`</b> qui définit la version de la spécification Swagger utilisée,</p>
+                    <p>un champ <b>`info`</b> contenant des informations sur l'API telles que le titre, la version et la description</p>
+                    <p>et un champ <b>`paths`</b> contenant tous les points de terminaison de l'API.</p>
+                    <p>Dans le champ <b>`paths`</b>, nous pouvons définir nos opérations CRUD :</p>
+                    <pre><code class="yaml">
+paths:
+'/items':
+  post:
+    # Créer un item
+  get:
+    # Lire tous les items
+'/items/{id}':
+  put:
+    # Mettre a jour un item
+  delete:
+    # Supprimer un item                    
+                    </code></pre>
+                    <p>Chaque point de terminaison est défini par son URL et la méthode HTTP utilisée pour y accéder.</p>
+                    <p>Par exemple, le point de terminaison pour la création d'un nouvel élément est l'URL <b>`/items`</b> et la méthode HTTP est <b>`post`</b>.</p>
+                    <p>Nous pouvons également spécifier les paramètres de demande et de réponse pour chaque opération.</p>
+                    <div class="tips">
+                        <ul>
+                            <li>Vous pouvez également utiliser les champs de <b>`parameters`</b> et de <b>`responses`</b> pour spécifier les paramètres de demande et de réponse pour chaque opération.</li>
+                            <li><a href="https://editor.swagger.io/" target="_blank">aller sur swagger éditor</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="exercice">
+                <div class="wrapper">
+                <h2>// Exercice</h2>
+                <p>Faisons un fichier en YAML pour faire la documentation de notre futur API REST :</p>
+                <p>Le CRUD va s'effectuer sur des <b>`items`</b> avec 4 opérations :</p>
+                <ul>
+                    <li>Créer un nouvel élément</li>
+                    <li>Obtenir une liste d'éléments</li>
+                    <li>Mettre à jour un élément</li>
+                    <li>Supprimer un élément</li>
+                </ul>
+
+                <button onclick="myFunction()">réponse</button>
+                <div id="reponse">
+                    <p>Voici un exemple possible pour cet exercice :</p>
+                    <pre><code class="yaml">
+swagger: "2.0"
+info:
+  version: "1.0.0"
+  title: "CRUD API"
+
+paths:
+  /items:
+    post:
+      summary: "Create a new item"
+      description: "Create a new item with a unique ID and specified properties"
+      parameters:
+        - in: "body"
+          name: "item"
+          description: "Item object that needs to be added"
+          required: true
+          schema:
+            $ref: "#/definitions/Item"
+      responses:
+        "201":
+          description: "Item created successfully"
+    get:
+      summary: "Get a list of items"
+      description: "Retrieve a list of all items"
+      responses:
+        "200":
+          description: "List of items retrieved successfully"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Item"
+  /items/{itemId}:
+    get:
+      summary: "Get an item by ID"
+      description: "Retrieve an item by its unique ID"
+      parameters:
+        - in: "path"
+          name: "itemId"
+          description: "ID of the item to retrieve"
+          required: true
+          type: "integer"
+      responses:
+        "200":
+          description: "Item retrieved successfully"
+          schema:
+            $ref: "#/definitions/Item"
+    put:
+      summary: "Update an item"
+      description: "Update an existing item by its unique ID"
+      parameters:
+        - in: "path"
+          name: "itemId"
+          description: "ID of the item to update"
+          required: true
+          type: "integer"
+        - in: "body"
+          name: "item"
+          description: "Item object that needs to be updated"
+          required: true
+          schema:
+            $ref: "#/definitions/Item"
+      responses:
+        "200":
+          description: "Item updated successfully"
+    delete:
+      summary: "Delete an item"
+      description: "Delete an existing item by its unique ID"
+      parameters:
+        - in: "path"
+          name: "itemId"
+          description: "ID of the item to delete"
+          required: true
+          type: "integer"
+      responses:
+        "200":
+          description: "Item deleted successfully"
+
+definitions:
+  Item:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+      name:
+        type: "string"
+      description:
+        type: "string"
+    </code></pre>
+            </div>
+        </section>
+    </main>
+    <script src="script.js"></script> 
+</body>
+</html>
