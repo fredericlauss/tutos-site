@@ -199,6 +199,28 @@ button {
     border-bottom: 6px solid var(--color-background);
     }
 
+    .btn {
+      margin-top: 25px;
+      font-family: 'Inter Tight';
+      font-style: normal;
+      font-weight: 700;
+      font-size: 1.125rem;
+      line-height: 156%;
+      padding: 12px 44px;
+      background: var(--color-background);
+      border: 1px solid var(--color-accent-hard);
+      border-bottom: 6px solid var(--color-accent-hard);
+      color: var(--color-typo);
+      transition: all 0.5s ease-in-out;
+      align-self: center;
+      cursor: pointer;
+      }
+      .btn:hover {
+      color: var(--color-background);
+      background: var(--color-accent-hard);
+      border: 1px solid var(--color-background);
+      border-bottom: 6px solid var(--color-background);
+      }
 
   /* main */
 
