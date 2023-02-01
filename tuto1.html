@@ -38,14 +38,16 @@
             <div class="wrapper">
                 <h1>Swagger</h1>
                 <h2>// Introduction</h2>
-                <p>Dans ce tutorial, Nous allons apprendre à créer un fichier YAML pour décrire une API qui effectue des opération de CRUD avec Swagger. CRUD signifié Creat, read, upadate et delete ( Créer, Lire, Mettre à jour et Supprimer ), ce sont les opérations les plus basiques qui peuvent être effectués sur une base de données.  À la fin de ce tutoriel, nous aurons une solide compréhension de la création d'une API et de l'utilisation de YAML pour définir ses composants.</p>
+                <p>Dans ce tutoriel, nous aborderons différentes notions. 
+                  Nous allons apprendre à créer un fichier YAML pour décrire une API afin d'effectuer des opérations de CRUD avec Swagger. (CRUD signifie CREATE, READ, UPDATE et DELETE, l’équivalent anglais de : CRÉER, LIRE, METTRE À JOUR et SUPPRIMER), il s’agit des opérations les plus basiques qui peuvent être effectuées sur une base de données. 
+                  À la fin de ce tutoriel, vous aurez une solide compréhension de la création d'une API et de l'utilisation de YAML pour définir ses composants.</p>
             </div>
         </section>
         <section>
             <div class="wrapper">
                 <div class="sous-wrapper">
                     <h4>/ Comprendre les bases de YAML</h4>
-                    <p>YAML, qui signifie "YAML Ain't Markup Language", est un format de sérialisation de données lisible par l'homme. Il est souvent utilisé pour les fichiers de configuration, et c'est le format que Swagger utilise pour définir une API.</p>
+                    <p>YAML signifie "YAML Ain't Markup Language", est un format de sérialisation de données lisibles par l'homme. Il est souvent utilisé pour les fichiers de configuration, et c'est le format que Swagger utilise pour définir une API.</p>
                     <p>Avant de plonger dans la création d'un fichier YAML pour une API Swagger, il est important d'avoir une compréhension de base de la syntaxe YAML et des types de données.</p>
                     
                     
@@ -77,14 +79,14 @@
                     <p>Maintenant que nous comprenons les bases de YAML, parlons de l'importance de Swagger.</p>
                     <ul>
                         <li>Swagger est un outil pour concevoir, créer et documenter des API REST</li>
-                        <li>Il permet une collaboration facile entre les développeurs, les équipes d'assurance qualité et les parties prenantes</li>
-                        <li>Il fournit une documentation claire et lisible par l'homme des points de terminaison de l'API, des exemples de requête/réponse, etc</li>
+                        <li>Il permet une collaboration facile entre les développeurs et les équipes</li>
+                        <li>Il fournit une documentation claire et lisible par l'homme des routes de l'API, des exemples de requête/réponse</li>
                     </ul>
-                    <p>En utilisant Swagger, nous pouvons nous assurer que notre API est bien conçue et facile à utiliser pour les autres développeurs. Il permet également une communication aisée entre les équipes et les parties prenantes.</p>
+                    <p>En utilisant Swagger, nous pouvons nous assurer que notre API est bien conçue et facile à utiliser pour les autres développeurs. Il permet également une communication aisée entre les différentes équipes</p>
                     <div class="tips">
                         <ul>
                             <li>Swagger dispose également d'un outil appelé Swagger Editor, qui permet de créer et de modifier facilement des fichiers YAML pour les API Swagger.</li>
-                            <li>De nombreux langages de programmation populaires, tels que Node.js, disposent de bibliothèques qui s'intègrent à Swagger pour générer automatiquement de la documentation et d'autres fonctionnalités.</li>
+                            <li>De nombreux langages de programmation populaires, tels que Node.js, disposent de bibliothèques qui s'intègrent à Swagger pour générer automatiquement de la documentation.</li>
                         </ul>
                     </div>
                 </div>
@@ -123,12 +125,12 @@ paths:
   delete:
     # Supprimer un item                    
                     </code></pre>
-                    <p>Chaque point de terminaison est défini par son URL et la méthode HTTP utilisée pour y accéder.</p>
+                    <p>Chaque routes est défini par son URL et la méthode HTTP utilisée pour y accéder.</p>
                     <p>Par exemple, le point de terminaison pour la création d'un nouvel élément est l'URL <b>`/items`</b> et la méthode HTTP est <b>`post`</b>.</p>
-                    <p>Nous pouvons également spécifier les paramètres de demande et de réponse pour chaque opération.</p>
+                    <p>Nous pouvons également spécifier les paramètres requête et de réponse pour chaque route.</p>
                     <div class="tips">
                         <ul>
-                            <li>Vous pouvez également utiliser les champs de <b>`parameters`</b> et de <b>`responses`</b> pour spécifier les paramètres de demande et de réponse pour chaque opération.</li>
+                            <li>Vous pouvez également utiliser les champs de <b>`parameters`</b> et de <b>`responses`</b> pour spécifier les paramètres de requête et de réponse pour chaque route.</li>
                             <li><a href="https://editor.swagger.io/" target="_blank">aller sur swagger éditor</a></li>
                         </ul>
                     </div>
