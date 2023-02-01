@@ -45,12 +45,12 @@
             <div class="wrapper">
                 <div class="sous-wrapper">
                     <h4>/ Configuration de l'environnement</h4>
-                    <p>Tout d'abord, créez un nouveau dossier de projet et accédez-y dans le terminal. Ensuite, vous devrez installer les dépendances requises à l'aide du gestionnaire de paquets npm. Exécutez la commande suivante dans votre terminal :</p>
+                    <p>Tout d'abord, créez un nouveau dossier de projet et accédez-y dans le terminal. Ensuite, vous devrez installer les dépendances à l'aide de npm. Exécutez la commande suivante dans votre terminal :</p>
                     <pre><code class="yaml">
 npm init
 npm install express body-parser cors dotenv                        
                     </code></pre>
-                    <p>Le module dotenv est utilisé pour charger les variables d'environnement d'un fichier .env dans process.env. Le module body-parser est utilisé pour analyser les corps des requêtes entrantes. Le module cors est utilisé pour activer le partage de ressources inter-origine (CORS) dans notre application.</p>
+                    <p>Le module dotenv est utilisé pour charger les variables d'environnement d'un fichier <strong>.env</strong> . Le module body-parser est utilisé pour analyser les corps des requêtes entrantes. Le module cors est utilisé pour activer le partage de ressources inter-origine (CORS) dans notre API.</p>
 
                     <h5>Écriture du code du serveur</h5>
                     <p>Dans le dossier du projet, créez un nouveau fichier nommé index.js et ajoutez le code suivant :</p>
@@ -77,12 +77,12 @@ app.listen(PORT, () => {
 console.log(`The app listening at http://localhost: ${PORT}`)
 });                     
                     </code></pre>
-                    <p>ce code met en place la structure de base de notre serveur. Le module express est utilisé pour créer l'application Express. La variable PORT est utilisée pour spécifier le numéro de port sur lequel le serveur écoutera les requêtes entrantes. La variable itemsRoutes est utilisée pour exiger les routes pour notre API, qui seront définies dans un fichier séparé.</p>
-                    <p>Ensuite, nous utilisons les modules cors et body-parser pour activer CORS et analyser les corps des requêtes entrantes, respectivement.</p>
-                    <p>Enfin, nous définissons une route de base /api/todos et indiquons au serveur d'écouter sur le PORT spécifié.</p>
+                    <p>ce code met en place la structure de base de notre serveur. Le module express est utilisé pour créer l'application Express. La variable <strong>PORT</strong> est utilisée pour spécifier le numéro de port sur lequel le serveur écoutera les requêtes entrantes. La variable <strong>itemsRoutes</strong> est utilisée pour appeler les routes pour notre API, qui seront définies dans un fichier séparé.</p>
+                    <p>Ensuite, nous utilisons les modules cors et body-parser pour activer CORS et analyser les corps des requêtes entrantes.</p>
+                    <p>Enfin, nous définissons une route de base /api/todos et indiquons au serveur d'écouter sur le <strong>PORT</strong> spécifié.</p>
 
                     <h5>Écriture des routes API</h5>
-                    <p>Créez un nouveau dossier nommé routes dans le dossier du projet et un nouveau fichier nommé items.js dans le dossier routes. Ajoutez le code suivant au fichier items.js :</p>
+                    <p>Créez un nouveau dossier nommé <strong>`routes`</strong> dans le dossier du projet et un nouveau fichier nommé <strong>`items.js`</strong> dans le dossier routes. Ajoutez le code suivant au fichier <strong>`items.js`</strong> :</p>
                     <pre><code class="yaml">
 const express = require( 'express');
 const router = express.Router();
@@ -100,11 +100,11 @@ router.delete('/:id', truc);
     
 module.exports = router;                    
                      </code></pre>
-                     <p>Dans ce fichier, nous définissons les routes pour notre API en utilisant la fonction express.Router(). Nous avons également besoin du module contrôleur qui contiendra la logique de gestion des différentes routes.</p>
+                     <p>Dans ce fichier, nous définissons les routes pour notre API en utilisant la fonction <strong>`express.Router()`</strong>. Nous avons également besoin du module contrôleur qui contiendra la logique des routes.</p>
 
                      <h5>controller de test ( sans logique )</h5>
-                     <p>Ce contrôleur est un exemple très simple, car il ne contient qu'une seule fonction truc qui enregistre la chaîne "coucou" dans la console. La fonction truc est une fonction flèche, qui est une syntaxe abrégée pour écrire des fonctions anonymes en JavaScript.</p>
-                     <p>Dans un scénario réel, ce contrôleur contiendrait généralement une logique permettant d'interagir avec une base de données, de manipuler des données et de renvoyer des réponses au client. La fonction truc pourrait être remplacée par des fonctions qui effectuent des opérations CRUD (Create, Read, Update, Delete) sur une base de données. Le code contenu dans ces fonctions dépendrait des exigences spécifiques de l'application.</p>
+                     <p>Ce contrôleur est un exemple très simple, car il ne contient qu'une seule fonction <strong>`truc`</strong> qui enregistre la chaîne "coucou" dans la console. La fonction <strong>`truc`</strong> est une fonction flèchée, qui est une syntaxe abrégée pour écrire des fonctions anonymes en JavaScript.</p>
+                     <p>Dans un scénario réel, ce contrôleur contiendrait généralement une logique permettant d'interagir avec une base de données, de manipuler des données et de renvoyer des réponses au client. La fonction <strong>`truc`</strong> pourrait être remplacée par des fonctions qui effectuent des opérations CRUD (Create, Read, Update, Delete) sur une base de données.</p>
                      <p>voici le code pour <b>`controllers/itemsController`</b> :</p>
                      <pre><code class="yaml">
 truc = () => {
