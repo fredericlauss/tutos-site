@@ -46,18 +46,18 @@
             <div class="wrapper">
                 <div class="sous-wrapper">
                     <h5> comprendre MongoDB</h5>
-                    <p>MongoDB est un programme de base de données orienté document multiplateforme. Il est classé comme un programme de base de données NoSQL, ce qui signifie qu'il n'utilise pas la base de données relationnelle tabulaire SQL traditionnelle. Au lieu de cela, il utilise des documents de type JSON avec des schémas optionnels.</p>
+                    <p>MongoDB est un programme de base de données orienté document. C'est une base de données NoSQL, ce qui signifie qu'elle n'utilise pas la base de données relationnelle SQL traditionnelle. Au lieu de cela, elle utilise des documents de type JSON.</p>
                     
                     
                     <h5>Configuration de MongoDB</h5>
-                    <p>Pour configurer MongoDB, nous devons créer une base de données et démarrer le serveur MongoDB. Pour créer une base de données, ouvrez le terminal ou l'invite de commande et tapez la commande suivante :</p>
+                    <p>Pour configurer MongoDB, nous devons créer une base de données et démarrer le serveur MongoDB. Pour créer une base de données, ouvrez le terminal et tapez la commande suivante :</p>
                     <pre><code class="yaml">
 $ mongod
                     </code></pre>
                     <p>Cela permettra de démarrer le serveur MongoDB sur votre système.</p>
                     
                     <h5>établir la connexion à la base de données</h5>
-                    <p>Pour établir une connexion à la base de données, nous devons installer le paquet Mongoose. Mongoose est un outil de modélisation d'objets MongoDB conçu pour fonctionner dans un environnement asynchrone. Pour l'installer, tapez la commande suivante dans votre terminal ou votre invite de commande :</p>
+                    <p>Pour établir une connexion à la base de données, nous devons installer le paquet Mongoose. Mongoose est un outil de modélisation d'objets MongoDB. Pour l'installer, tapez la commande suivante dans votre terminal ou votre invite de commande :</p>
                     <pre><code class="yaml">
 $ npm install mongoose
                     </code></pre>
@@ -81,10 +81,10 @@ var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));                      
                     </code></pre>
                     <p>Dans le code ci-dessus, nous avons importé le paquet mongoose et créé une connexion MongoDB à l'aide de la méthode mongoose.connect. Nous avons également défini les options <strong>`useNewUrlParser`</strong> et <strong>`useUnifiedTopology</strong> à true pour de meilleures performances.</p>
-                    <p>La constante mongoDB contient l'URL permettant de se connecter au serveur MongoDB. Dans cet exemple, elle est définie sur la valeur de la variable d'environnement MONGO_URL. Si la variable d'environnement n'est pas définie, la constante mongoDB sera définie comme nulle.</p>
+                    <p>La constante mongoDB contient l'URL permettant de se connecter au serveur MongoDB. Dans cet exemple, elle est définie sur <strong>MONGO_URL</strong>. Si il n'est pas définie, la constante mongoDB sera définie comme NULL.</p>
 
                     <h5>Connexion de la base de données à notre API</h5>
-                    <p>Pour connecter la base de données à notre API, nous devons exiger le fichier database.js dans notre fichier index.js. Ajoutez la ligne de code suivante en haut de votre fichier index.js :</p>
+                    <p>Pour connecter la base de données à notre API, nous devons appeler le fichier <strong>`database.js`</strong> dans notre fichier <strong>`index.js`</strong>. Ajoutez la ligne de code suivante en haut de votre fichier index.js :</p>
                     <pre><code class="yaml">
 require('./config/database');                     
                     </code></pre>
@@ -110,7 +110,7 @@ const Items = mongoose.model( 'Items', {
   
 module.exports = { Items }                   
                     </code></pre>
-                    <p>Une fois le modèle défini, vous pouvez effectuer diverses opérations CRUD sur la collection de documents, telles que la création de nouveaux documents, la lecture de documents existants, la mise à jour de documents et la suppression de documents.</p>
+                    <p>Une fois le modèle défini, vous pouvez effectuer diverses opérations CRUD sur la "collection de documents", telles que la création la lecture, la mise à jour et la suppression ( CRUD ).</p>
 
                     
                     
